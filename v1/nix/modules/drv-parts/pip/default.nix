@@ -93,7 +93,17 @@ in {
     # Keep package metadata fetched by Pip in our lockfile
     lock.fields.fetchPipMetadata = {
       script = config.deps.fetchPipMetadata {
-        inherit (cfg) pypiSnapshotDate pipFlags pipVersion requirementsList requirementsFiles nativeBuildInputs;
+        inherit
+          (cfg)
+          nativeBuildInputs
+          pypiSnapshotDate
+          pipFlags
+          pipVersion
+          requirementsList
+          requirementsFiles
+          # wheelVersion
+          
+          ;
         inherit (config.deps) writePureShellScript python nix git;
       };
     };

@@ -62,6 +62,14 @@ in {
       default = {};
     };
 
+    # wheelVersion = l.mkOption {
+    #   type = t.str;
+    #   description = ''
+    #     pip version to use to generate the report
+    #   '';
+    #   default = "0.40.0";
+    # };
+
     nativeBuildInputs = l.mkOption {
       type = t.listOf t.package;
       default = [];

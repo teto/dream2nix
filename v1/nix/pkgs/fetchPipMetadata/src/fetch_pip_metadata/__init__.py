@@ -74,6 +74,7 @@ def fetch_pip_metadata():
             proxy.cafile,
             "--report",
             str(home / "report.json"),
+            "--ignore-installed",
         ]
         for req in args["requirementsList"]:
             if req:
