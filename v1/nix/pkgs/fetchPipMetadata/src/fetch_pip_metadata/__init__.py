@@ -81,6 +81,14 @@ def fetch_pip_metadata():
             if req:
                 flags += ["-r", req]
 
+        # list available distribution formats
+        subprocess.run(
+            [f"{venv_path}/bin/pip", "debug", "--verbose"],
+            check=True,
+            stdout=sys.stderr,
+            stderr=sys.stderr,
+        )
+
         subprocess.run(
             [
                 f"{venv_path}/bin/pip",
