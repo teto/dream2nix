@@ -38,6 +38,7 @@ def prepare_venv(venv_path, pip_version, wheel_version):
 
 
 def fetch_pip_metadata():
+    print(f"python: {sys.executable}")
     with open(sys.argv[1], "r") as f:
         args = json.load(f)
 
