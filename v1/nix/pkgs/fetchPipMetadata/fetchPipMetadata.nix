@@ -74,7 +74,15 @@
       pipFlags
       ;
   });
-in
-  writePureShellScript
-  path
-  "${fetchPipMetadata}/bin/fetch_pip_metadata ${args}"
+  script = python.pkgs.buildPythonPackage {
+    name = "fetch_pip_metadata";
+    format = "flit";
+    src = ./src;
+    buildInputs = [makeWrapper];
+    propagatedBuildInputs = with python.pkgs; [packaging certifi python-dateutil pip];
+    postInstall = ''
+      wrapProgram $out/bin/fetch_pip_metadata \
+        --prefix PATH : ${lib.makeBinPath ([nix git] ++ nativeBuildInputs)} \
+    '';
+  };
+in "${script}/bin/fetch_pip_metadata ${args}"
