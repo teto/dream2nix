@@ -40,7 +40,7 @@
 
     # required for translator pip
     mach-nix = {
-      url = "mach-nix";
+      url = "github:DavHau/mach-nix";
       flake = false;
     };
 
